@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr" >
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>To do list</title>
+    <!--Fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap" rel="stylesheet">
+  <!--CSS-->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+  <!--Javascript-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+</head>
+
+
+
+
+<body>
+<!------------------------------------------------------BACKGROUND--------------------------------------------------------------------->
+
+<div class="bg_2"></div>
+
+<!------------------------------------------------------NAVBAR--------------------------------------------------------------------->
+
+<div class="left">
+<div class="nav-side-menu">
+  <div class="brand">HOME</div>
+  <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+      <div class="menu-list">
+
+          <ul id="menu-content" class="menu-content collapse out">
+              <li>
+                <a href="index.html" class="active">
+                  <i class="img"></i> 
+                  À faire
+                </a>
+              </li>
+              <li>
+                <a href="Mood.html">
+                <i class="img"></i> Humeur du jour
+                </a>
+              </li>
+
+              <li data-toggle="collapse" data-target="#service" class="collapsed">
+                <a href="#"><i class="img"></i> Fond d'ecran <span class="arrow"></span></a>
+              </li>  
+              <ul class="sub-menu collapse" id="service">
+                <li>
+                    <a href="index.html">Ciel Étoilé</a>
+                  </li>
+                  <li>
+                    <a href="bg2.html" class="act">Terminal</a>
+                  </li>
+                  <li>
+                    <a href="bg3.html">CyberCity</a>
+                  </li>
+              </ul>
+          </ul>
+   </div>
+</div>
+</div>
+
+<!------------------------------------------------------TO DO LIST--------------------------------------------------------------------->
+<!-- Title -->
+<div id="main">
+  <div class="header2">
+    <h1>TO DO LIST</h1><p>Bonjour <span>Prénom</span>, Aujourd'hui nous sommes le :</p>
+    <div id="current_date">
+      <script>
+      date = new Date();
+      year = date.getFullYear();
+      month = date.getMonth() + 1;
+      day = date.getDate();
+      document.getElementById("current_date").innerHTML = month + "/" + day + "/" + year;
+      </script>
+    </div>
+  </div>
+
+
+  <!-- Container for add a task -->
+  <div class="add-task-container">
+    <input type="text" maxlength="60" id="taskText" placeholder="Nouvelle tâche..." onkeydown="if (event.keyCode == 13)
+                        document.getElementById('add').click()">
+    <button id="add" class="button add-button" onclick="addTask()">Ajouter</button>
+  </div>
+
+<!-- Columns -->
+  <div class="main-container">
+    <ul class="columns">
+
+      <li class="column to-do-column">
+        <div class="column-header">
+          <h4>À Faire</h4>
+       </div>
+       <ul class="task-list" id="to-do">
+        </ul>
+      </li>
+
+      <li class="column doing-column">
+        <div class="column-header">
+          <h4>En Cours</h4>
+        </div>
+        <ul class="task-list" id="doing">
+        </ul>
+      </li>
+
+      <li class="column done-column">
+        <div class="column-header">
+         <h4>Fait</h4>
+        </div>
+        <ul class="task-list" id="done">
+        </ul>
+      </li>
+
+      <li class="column trash-column">
+        <div class="column-header">
+          <h4>Obsolète</h4>
+        </div>
+       <ul class="task-list" id="trash">
+       </ul>
+        <div class="column-button">
+          <button class="button delete-button" onclick="emptyTrash()">Supprimer</button>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</div>
+<!-- partial -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.js"></script><script  src="script.js"></script>
+</body>
+</html>

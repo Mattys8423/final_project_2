@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr" >
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>To do list</title>
+    <!--Fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap" rel="stylesheet">
+  <!--CSS-->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+  <!--Javascript-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+</head>
+
+
+
+
+<body>
+<!------------------------------------------------------BACKGROUND--------------------------------------------------------------------->
+
+<style type="text/css">
+  body {
+    background-color: #8EC5FC;
+    background-image: linear-gradient(90deg, #8EC5FC 0%, #E0C3FC 100%);    
+  }
+</style>
+
+<!------------------------------------------------------NAVBAR--------------------------------------------------------------------->
+
+<div class="left">
+<div class="nav-side-menu">
+  <div class="brand">HOME</div>
+  <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+      <div class="menu-list">
+
+          <ul id="menu-content" class="menu-content collapse out">
+              <li>
+                <a href="index.html">
+                  <i class="img"></i> 
+                  À faire
+                </a>
+              </li>
+              <li>
+                <a href="Mood.html" class="active">
+                <i class="img"></i> Humeur du jour
+                </a>
+              </li>
+              
+              <li data-toggle="collapse" data-target="#service" class="collapsed">
+                <a href="#"><i class="img"></i> Fond d'ecran <span class="arrow"></span></a>
+              </li>  
+              <ul class="sub-menu collapse" id="service">
+                <li>Ciel Étoilé</li>
+                <li>Terminal</li>
+                <li>Cybercity</li>
+              </ul>
+          </ul>
+   </div>
+  </div>
+</div>
+
+
+<!------------------------------------------------------MOOD--------------------------------------------------------------------->
+<fieldset class="emotion-rating">
+
+  <!-- INPUTS -->
+  <input name="rating" value="1" type="radio" id="rating1">
+  <input name="rating" value="2" type="radio" id="rating2">
+  <input checked name="rating" value="3" type="radio" id="rating3">
+  <input name="rating" value="4" type="radio" id="rating4">
+  <input name="rating" value="5" type="radio" id="rating5">
+
+
+  <!-- LABELS -->
+  <div class="labels">
+    <label title="Sad" aria-describedby="SadTooltip" for="rating1">
+      <span aria-hidden="true" class="star">😞</span>
+    </label>
+    <label title="Not happy" aria-describedby="NotHappyTooltip" for="rating2">
+      <span aria-hidden="true" class="star">😒</span>
+    </label>
+    <label title="Neutral" aria-describedby="NeutralTooltip" for="rating3">
+      <span aria-hidden="true" class="star">😐</span>
+    </label>
+    <label title="Happy" aria-describedby="HappyTooltip" for="rating4">
+      <span aria-hidden="true" class="star">😊</span>
+    </label>
+    <label title="Ecstatic" aria-describedby="EcstaticTooltip" for="rating5">
+      <span aria-hidden="true" class="star">😁</span>
+    </label>
+  </div>
+
+  <!-- TOOLTIPS -->
+  <div class="tooltip" id="SadTooltip">😞 Triste</div>
+  <div class="tooltip" id="NotHappyTooltip">😒 Blasé</div>
+  <div class="tooltip" id="NeutralTooltip">😐 Neutre</div>
+  <div class="tooltip" id="HappyTooltip">😊 Heureux</div>
+  <div class="tooltip" id="EcstaticTooltip">😁 Super heureux!</div>
+
+</fieldset>
+
+<style type="text/css">
+
+  /* this code is lifted from InHuOfficial */
+.hide-visually,
+.emotion-rating>input {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+  clip: rect(1px, 1px, 1px, 1px);
+  /*maybe deprecated but we need to support legacy browsers */
+  clip-path: inset(50%);
+  /*modern browsers, clip-path works inwards from each corner*/
+  white-space: nowrap;
+  /* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
+}
+
+.emotion-rating {
+  display: inline-block;
+  border: none;
+  padding: 0.5em;
+
+}
+
+@media (min-width: 767px) {
+  .emotion-rating {
+    margin-left: 300px;
+    margin-top: 15%;
+    margin-left: 40%;
+    font-size: 500%;
+}}
+
+@media (max-width: 767px) {
+  .emotion-rating {
+    margin-left: 300px;
+    margin-top: 15%;
+    margin-left: 10%;
+    font-size: 300%;
+}}
+
+.emotion-rating:focus-within {
+  outline: 3px solid #add8e6;
+}
+
+.emotion-rating .labels {
+  display: inline-flex;
+}
+
+.emotion-rating .labels>label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  line-height: 1em;
+  text-align: center;
+  transform: scale(0.2);
+  color: transparent;
+  transition: all 350ms cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  background-color: #f5f5f5;
+  height: 1.75em;
+  width: 1.75em;
+  border-radius: 1em;
+  user-select: none;
+}
+
+.emotion-rating .labels>label:hover {
+  transform: scale(0.6);
+  color: initial;
+  z-index: 1;
+}
+
+.emotion-rating .tooltip {
+  font-size: 0.75em;
+  height: 0;
+  text-align: left;
+  box-sizing: border-box;
+  border-radius: 15px;
+  background-color: white;
+  opacity: 0;
+  transform: translateY(-50%);
+  z-index: 0;
+  position: relative;
+  transition-property: opacity, transform;
+  transition: 0 cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+/* star 1 */
+#rating1:checked~.labels>[for=rating1] {
+  transform: scale(1.4);
+  color: initial;
+  z-index: 0;
+}
+
+#rating1:checked~.labels>[for=rating2] {
+  transform: scale(1);
+  color: initial;
+  z-index: 1;
+}
+
+#rating1:checked~.labels>[for=rating2] .star {
+  opacity: 0.8;
+}
+
+#rating1:checked~#SadTooltip {
+  display: block;
+  opacity: 1;
+  transform: translate(0);
+  height: auto;
+  padding: 0.4em 0.8em;
+  margin-top: 0.8em;
+  border: 4px solid #cfcfcf;
+  transition-duration: 350ms;
+  transition-delay: 150ms;
+}
+
+/* star 2 */
+#rating2:checked~.labels>[for=rating1] {
+  transform: scale(1);
+  color: initial;
+  z-index: 1;
+}
+
+#rating2:checked~.labels>[for=rating1] .star {
+  opacity: 0.8;
+}
+
+#rating2:checked~.labels>[for=rating2] {
+  transform: scale(1.4);
+  color: initial;
+  z-index: 0;
+}
+
+#rating2:checked~.labels>[for=rating3] {
+  transform: scale(1);
+  color: initial;
+  z-index: 1;
+}
+
+#rating2:checked~.labels>[for=rating3] .star {
+  opacity: 0.8;
+}
+
+#rating2:checked~#NotHappyTooltip {
+  display: block;
+  opacity: 1;
+  transform: translate(0);
+  height: auto;
+  padding: 0.4em 0.8em;
+  margin-top: 0.8em;
+  border: 4px solid #cfcfcf;;
+  transition-duration: 350ms;
+  transition-delay: 150ms;
+}
+
+
+/* star 3 */
+#rating3:checked~.labels>[for=rating2] {
+  transform: scale(1);
+  color: initial;
+  z-index: 1;
+}
+
+#rating3:checked~.labels>[for=rating2] .star {
+  opacity: 0.8;
+}
+
+#rating3:checked~.labels>[for=rating3] {
+  transform: scale(1.4);
+  color: initial;
+  z-index: 0;
+}
+
+#rating3:checked~.labels>[for=rating4] {
+  transform: scale(1);
+  color: initial;
+  z-index: 1;
+}
+
+#rating3:checked~.labels>[for=rating4] .star {
+  opacity: 0.8;
+}
+
+#rating3:checked~#NeutralTooltip {
+  display: block;
+  opacity: 1;
+  transform: translate(0);
+  height: auto;
+  padding: 0.4em 0.8em;
+  margin-top: 0.8em;
+  border: 4px solid #cfcfcf;;
+  transition-duration: 350ms;
+  transition-delay: 150ms;
+}
+
+/* star 4 */
+#rating4:checked~.labels>[for=rating3] {
+  transform: scale(1);
+  color: initial;
+  z-index: 0;
+}
+
+#rating4:checked~.labels>[for=rating3] .star {
+  opacity: 0.8;
+}
+
+#rating4:checked~.labels>[for=rating4] {
+  transform: scale(1.4);
+  color: initial;
+  z-index: 1;
+}
+
+#rating4:checked~.labels>[for=rating5] {
+  transform: scale(1);
+  color: initial;
+  z-index: 1;
+}
+
+#rating4:checked~.labels>[for=rating5] .star {
+  opacity: 0.8;
+}
+
+#rating4:checked~#HappyTooltip {
+  display: block;
+  opacity: 1;
+  transform: translate(0);
+  height: auto;
+  padding: 0.4em 0.8em;
+  margin-top: 0.8em;
+  border: 4px solid #cfcfcf;;
+  transition-duration: 350ms;
+  transition-delay: 150ms;
+}
+
+/* star 5 */
+#rating5:checked~.labels>[for=rating4] {
+  transform: scale(1);
+  color: initial;
+  z-index: 1;
+}
+
+#rating5:checked~.labels>[for=rating4] .star {
+  opacity: 0.8;
+}
+
+#rating5:checked~.labels>[for=rating5] {
+  transform: scale(1.4);
+  color: initial;
+  z-index: 0;
+}
+
+#rating5:checked~#EcstaticTooltip {
+  display: block;
+  opacity: 1;
+  transform: translate(0);
+  height: auto;
+  padding: 0.4em 0.8em;
+  margin-top: 0.8em;
+  border: 4px solid #cfcfcf;
+  transition-duration: 350ms;
+  transition-delay: 150ms;
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion) {
+  .emotion-rating .tooltip {
+    transform: translate(0);
+  }
+
+  .emotion-rating .labels>label {
+    transform: scale(0.6) !important;
+    color: initial;
+    transition-duration: 0ms;
+  }
+
+  .emotion-rating .labels>label .star {
+    opacity: 0.8;
+  }
+
+  #rating1:checked~.labels>[for=rating1] {
+    transform: scale(1) !important;
+  }
+
+  #rating2:checked~.labels>[for=rating2] {
+    transform: scale(1) !important;
+  }
+
+  #rating3:checked~.labels>[for=rating3] {
+    transform: scale(1) !important;
+  }
+
+  #rating4:checked~.labels>[for=rating4] {
+    transform: scale(1) !important;
+  }
+
+  #rating5:checked~.labels>[for=rating5] {
+    transform: scale(1) !important;
+  }
+}
+</style>
+
+</body>
+</html>
